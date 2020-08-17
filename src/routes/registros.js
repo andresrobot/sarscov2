@@ -21,14 +21,18 @@ router.get('/temperatura/:id', isLoggedIn, async (req, res) => {
       } = req.params;
       console.log(id);
       const temperaturas = await pool.query('SELECT * FROM temperaturas WHERE reg_id = ?', [id]);
+      const registros = await pool.query('SELECT * FROM registros WHERE id = ?', [id]);
+
       res.render('registros/temperatura', {
+        registro: registros[0],
         temperatura: temperaturas[0]
       });
     });
-    router.post('/temperatura/:id', isLoggedIn, async (req, res) => {
+router.post('/temperatura/:id', isLoggedIn, async (req, res) => {
         const {
           id
         } = req.params;
+        console.log(id);
         const {
          temperatura
         } = req.body;
@@ -36,6 +40,7 @@ router.get('/temperatura/:id', isLoggedIn, async (req, res) => {
           temperatura,
           reg_id : id
         };
+        console.log(newLink);
         await pool.query('INSERT INTO temperaturas set ?', [newLink]);
         
         req.flash('SUCCESS', 'LINK UPDATED!!');
