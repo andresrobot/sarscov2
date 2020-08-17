@@ -2,10 +2,12 @@
   "name": "sarscov2",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "/src/index.js",
   "scripts": {
     "dev": "nodemon src/index.js",
-    "start": "node src/index.js"
+    "build": "babel src -d src",
+    "start": "nodemon --exec babel-node src/index.js",
+    "serve": "npm run build && node src/index.js"
   },
   "keywords": [],
   "author": "Andrés Robles Arce",
@@ -21,8 +23,17 @@
     "express-validator": "^6.6.1",
     "morgan": "^1.10.0",
     "mysql": "^2.18.1",
+    "node": "^14.8.0",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "timeago.js": "^4.0.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.1",
+    "@babel/node": "^7.10.5",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-node-externals": "^2.5.1"
   }
 }

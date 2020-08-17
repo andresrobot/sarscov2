@@ -1,65 +1,76 @@
 const express = require('express');
-const router = express.Router();
 
+const router = express.Router();
 
 const pool = require('../database');
 
-const { isLoggedIn } = require('../lib/auth');
-const { createPoolCluster } = require('mysql');
+const {
+  isLoggedIn
+} = require('../lib/auth');
 
-router.get('/add', isLoggedIn, (req, res) =>
-{
-    res.render('links/add');
+const {
+  createPoolCluster
+} = require('mysql');
+
+router.get('/add', isLoggedIn, (req, res) => {
+  res.render('links/add');
 });
-
-
 router.post('/add', async (req, res) => {
-    const { title, url, description } = req.body;
-    const newLink = {
-        title,
-        url,
-        description,
-        user_id: req.user.id
-    };
-    await pool.query('INSERT INTO links set ?', [newLink]);
-    req.flash('SUCCESS', 'Link Saved Successfully');
-    res.redirect('/links');
+  const {
+    title,
+    url,
+    description
+  } = req.body;
+  const newLink = {
+    title,
+    url,
+    description,
+    user_id: req.user.id
+  };
+  await pool.query('INSERT INTO links set ?', [newLink]);
+  req.flash('SUCCESS', 'Link Saved Successfully');
+  res.redirect('/links');
 });
-
 router.get('/', isLoggedIn, async (req, res) => {
-    const links = await pool.query('SELECT * FROM links WHERE user_id = ?', [req.user.id]);
-    res.render('links/list', { links });
+  const links = await pool.query('SELECT * FROM links WHERE user_id = ?', [req.user.id]);
+  res.render('links/list', {
+    links
+  });
 });
-
 router.get('/delete/:id', isLoggedIn, async (req, res) => {
-    const { id } = req.params;
-    await pool.query('DELETE FROM links WHERE ID = ?',[id]);
-    req.flash('SUCCESS','LINK REMOVED!!');
-   res.redirect('/links');
+  const {
+    id
+  } = req.params;
+  await pool.query('DELETE FROM links WHERE ID = ?', [id]);
+  req.flash('SUCCESS', 'LINK REMOVED!!');
+  res.redirect('/links');
 });
-
 router.get('/edit/:id', isLoggedIn, async (req, res) => {
-    const { id } = req.params;
-    const links = await pool.query('SELECT * FROM links WHERE id = ?',[id]);
-    res.render('links/edit', {link: links[0]});
-
+  const {
+    id
+  } = req.params;
+  const links = await pool.query('SELECT * FROM links WHERE id = ?', [id]);
+  res.render('links/edit', {
+    link: links[0]
+  });
 });
-
-router.post('/edit/:id', isLoggedIn, async (req, res) =>
-{
-    const { id } =  req.params;
-    const { title, description, url } = req.body;
-    const newLink = {
-        title,
-        description,
-        url,
-        user_id: req.user.id
-    };
-    await pool.query('UPDATE links set ? WHERE id = ?', [newLink, id]);
-    req.flash('SUCCESS','LINK UPDATED!!');
-    res.redirect('/links');
+router.post('/edit/:id', isLoggedIn, async (req, res) => {
+  const {
+    id
+  } = req.params;
+  const {
+    title,
+    description,
+    url
+  } = req.body;
+  const newLink = {
+    title,
+    description,
+    url,
+    user_id: req.user.id
+  };
+  await pool.query('UPDATE links set ? WHERE id = ?', [newLink, id]);
+  req.flash('SUCCESS', 'LINK UPDATED!!');
+  res.redirect('/links');
 });
-
-
-
 module.exports = router;
