@@ -78,7 +78,8 @@ router.get('/delete/:id', isLoggedIn, async (req, res) => {
   const {
     id
   } = req.params;
-  await pool.query('DELETE FROM registros WHERE ID = ?', [id]);
+  await pool.query('DELETE FROM temperaturas WHERE reg_id = ?', [id]);
+  await pool.query('DELETE FROM registros WHERE id = ?', [id]);
   req.flash('SUCCESS', 'Registro eliminado');
   res.redirect('/registros');
 });
