@@ -43,7 +43,7 @@ router.post('/temperatura/:id', isLoggedIn, async (req, res) => {
         console.log(newLink);
         await pool.query('INSERT INTO temperaturas set ?', [newLink]);
         
-        req.flash('SUCCESS', 'LINK UPDATED!!');
+        req.flash('SUCCESS', 'Temperatura de hoy salvada!!');
         res.redirect('/registros');
       });
 router.post('/add', async (req, res) => {
