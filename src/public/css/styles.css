@@ -1,13 +1,19 @@
 body {
     background: #f5f6f5;
     font-family: 'Oswald', sans-serif;
-    overflow: hidden;
+    
 
 }
 
 .index {
     width: 100vw;
     height: 100vh;
+    
+}
+.divider{
+    width:5px;
+    height:auto;
+    display:inline-block;
 }
 
 .masthead {

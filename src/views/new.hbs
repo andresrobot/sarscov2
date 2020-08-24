@@ -1,11 +1,12 @@
 
-    <div class="container">
+    <div class="container p-4">
       <div class="row justify-content-center">
         <div class="col-md-6">
           <div class="card mx-4">
             <div class="card-body p-4">
               <h1>Register</h1>
               <p class="text-muted">Create your account</p>
+              <form action="/registros/add" method="POST">
               <div class="input-group mb-3">
                 <div class="input-group-prepend"><span class="input-group-text">
                     <svg class="c-icon">
@@ -27,6 +28,7 @@
                     </svg></span></div>
                 <input class="form-control" type="password" placeholder="Password">
               </div>
+              
               <div class="input-group mb-4">
                 <div class="input-group-prepend"><span class="input-group-text">
                     <svg class="c-icon">
@@ -34,24 +36,17 @@
                     </svg></span></div>
                 <input class="form-control" type="password" placeholder="Repeat password">
               </div>
-              <button class="btn btn-block btn-success" type="button">Create Account</button>
+              </form>
+              <div class="form-group">
+              <button class="btn btn-block btn-success" type="button">Create Account</button></div>
             </div>
-            <div class="card-footer p-4">
-              <div class="row">
-                <div class="col-6">
-                  <button class="btn btn-block btn-facebook" type="button"><span>facebook</span></button>
-                </div>
-                <div class="col-6">
-                  <button class="btn btn-block btn-twitter" type="button"><span>twitter</span></button>
-                </div>
-                
-                
-              </div>
+
             </div>
           </div>
         </div>
       </div>
     </div>
+    
     <!-- CoreUI and necessary plugins-->
     <script src="vendors/@coreui/coreui/js/coreui.bundle.min.js"></script>
     <!--[if IE]><!-->

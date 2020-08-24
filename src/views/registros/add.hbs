@@ -5,22 +5,43 @@
         <div class ="card ">
             <div class="card-body">
                 <form action="/registros/add" method="POST">
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="nombre" placeholder="Nombre/s" autofocus>
+
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend"><span class="input-group-text">
+                                <svg class="c-icon">
+                                    <use xlink:href="../vendors/@coreui/icons/svg/free.svg#cil-user"></use>
+                                </svg></span></div>
+                        <input class="form-control" type="text" name="nombre" placeholder="Nombre/s">
                     </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="apellidoP" placeholder="Apellido Paterno">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend"><span class="input-group-text">
+                                <svg class="c-icon">
+                                    <use xlink:href="../vendors/@coreui/icons/svg/free.svg#cil-people"></use>
+                                </svg></span></div>
+                        <input class="form-control" type="text" name="apellidoP" placeholder="Apellido Paterno">
                     </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="apellidoM" placeholder="Apellido Materno">
-                    </div>                                          
-                    <div class="form-group">
-                        <input type="email" name="email" class="form-control" name="email" placeholder="E-mail">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend"><span class="input-group-text">
+                                <svg class="c-icon">
+                                    <use xlink:href="../vendors/@coreui/icons/svg/free.svg#cil-people"></use>
+                                </svg></span></div>
+                        <input class="form-control" type="text" name="apellidoM" placeholder="Apellido Materno">
+                    </div>                                      
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend"><span class="input-group-text">
+                                <svg class="c-icon">
+                                    <use xlink:href="../vendors/@coreui/icons/svg/free.svg#cil-envelope-open"></use>
+                                </svg></span></div>
+                        <input class="form-control" type="text"  name="email" placeholder="Email">
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend"><span class="input-group-text">
+                                <svg class="c-icon">
+                                    <use xlink:href="../vendors/@coreui/icons/svg/free.svg#cil-briefcase"></use>
+                                </svg></span></div>
+                        <input class="form-control" type="text" name="proyecto" placeholder="Proyecto">
                     </div>
            
-                    <div class="form-group">
-                        <input type="text" class="form-control" name="proyecto" placeholder="Proyecto">
-                    </div>
                     <div class="form-group">
                         <button class="btn btn-success btn-block">
                             Guardar registro
@@ -33,3 +54,9 @@
       </div>
     </div>
 </div>
+
+    <!-- CoreUI and necessary plugins-->
+    <script src="../vendors/@coreui/coreui/js/coreui.bundle.min.js"></script>
+    <!--[if IE]><!-->
+    <script src="../vendors/@coreui/icons/js/svgxuse.min.js"></script>
+    <!--<![endif]-->
