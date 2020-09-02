@@ -63,7 +63,8 @@ app.use((req, res, next) => {
 app.use(require('./routes'));
 app.use(require('./routes/authentication'));
 app.use('/registros', require('./routes/registros'));
-app.use(require('./routes/new')); 
+app.use(require('./routes/new'));
+app.use(require('./routes/login_reg')); 
 
 //Public
 

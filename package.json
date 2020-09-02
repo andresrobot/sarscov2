@@ -1,13 +1,15 @@
 {
   "name": "sarscov2",
   "version": "1.0.0",
-  "description": "",
+  "description": "Aplicación para llevar el control de posibles contagios de SARS CoV-2",
   "main": "/src/index.js",
+  "engines": {
+    "node": ">=4.3.2"
+  },
   "scripts": {
     "dev": "nodemon src/index.js",
-    "build": "babel src -d build",
-    "start": "node src/index.js",
-    "serve": "npm run build && node build/index.js"
+    "deploy": "gcloud app deploy",
+    "start": "node src/index.js"
   },
   "keywords": [],
   "author": "Andrés Robles Arce",

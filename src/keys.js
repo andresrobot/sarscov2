@@ -1,8 +1,22 @@
 module.exports = {
+  
+
+  /*
   database: {
-    host: 'bknzotuonpajuku06qea-mysql.services.clever-cloud.com',
-    user: 'ublccfxqowwmfrtv',
-    password: 'JLQOwDlKRszjVbSkHYGv',
-    database: 'bknzotuonpajuku06qea'
+    host: '35.237.150.160',
+    user: 'root',
+    password: 'Andre$23',
+    database: 'database_master'
   }
+   */
+  //Production
+
+   database: {
+    user: 'root',
+    password: 'Andre$23',
+    database: 'database_master',
+    socketPath : '/cloudsql/app-sarscov2:us-east1:sarscov2db'
+   }
+
+  
 };
