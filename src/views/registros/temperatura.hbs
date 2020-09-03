@@ -1,15 +1,81 @@
-          
-  {{#each temperaturas}}
+<!-- /.col-->
+<div class="div m-4">
+  <div class="col-lg-6 mx-auto">
+    <div class="card">
+      <div class="card-header"><i class="fa fa-align-justify"></i> Resultados</div>
+      <div class="card-body">
+        <table class="table table-responsive-sm table-striped">
+          <thead>
+            <tr>
+              <th>Temperatura</th>
+              <th>Fecha</th>
+              <th>Riesgo</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each temperaturas}}
+            <tr>
+              <td>{{temperatura}}°C</td>
+              <td>{{prettifyDate created_at}}</td>
+              {{#ifCond temperatura '>' '37'}}
+              <td><span class="badge badge-danger">Riesgo</span></td>
 
-    <div class="col-md-4 mx-auto">
-                        Tu temperatura el día {{prettifyDate created_at}} fue de {{temperatura}}°
-                    </div>   
+              {{else}}
+              <td><span class="badge badge-success">Libre</span></td>
+              {{/ifCond}}
 
-                    
-                    {{else}}
-               <div class="col-md-4 mx-auto">
-                   <a class="button" href="/registros/noTemp/{{id}}">No existen registros de temperatura agrega uno...</a>
-               </div>
-     
+            </tr>
+            {{else}}
+            <div class="col-md-4 mx-auto">
+              <a class="button" href="/registros/noTemp/{{id}}">No existen registros de temperatura agrega uno...</a>
+            </div>
+
+            {{/each}}
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+      </div>
+        </div>
+          </div>
+      <!-- /.row-->
+<div class="div m-4">
+  <div class="col-lg-6 mx-auto">
+    <div class="card">
+      <div class="card-header"><i class="fa fa-align-justify"></i> Resultados</div>
+        <div class="card-body">
+          <table class="table table-responsive-sm table-striped">
+                  <thead>
+                    <tr>
+                      <th>Síntomas</th>
+                      <th>Fecha</th>
+                      <th>Contacto</th>
+                      <th>Viaje</th>
+                      <th>Riesgo</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {{#each sint}}
+                    <tr>
+                      <td>{{sintomas}}</td>
+                      <td>{{created_at}}</td>
+                      <td>{{contacto}}</td>
+                      <td>{{viaje}}</td>
+                      {{#ifCond contacto '==' 'Si'}}
+                      <td><span class="badge badge-danger">Riesgo</span></td>
+                      {{else}}
+                      <td><span class="badge badge-success">Libre</span></td>
+                      {{/ifCond}}
+                    </tr>
                     {{/each}}
-                    
+
+
+                  </tbody>
+                </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+   

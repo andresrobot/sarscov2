@@ -8,7 +8,7 @@ module.exports = {
     password: 'Andre$23',
     database: 'database_master'
   }
-   */
+ */
   //Production
 
    database: {
@@ -17,6 +17,6 @@ module.exports = {
     database: 'database_master',
     socketPath : '/cloudsql/app-sarscov2:us-east1:sarscov2db'
    }
-
+  
   
 };

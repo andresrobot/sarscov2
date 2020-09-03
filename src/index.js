@@ -34,6 +34,7 @@ app.engine('.hbs', exphbs({
   partialsDir: path.join(app.get('views'), 'partials'),
   extname: '.hbs',
   helpers: require('./lib/handlebars')
+  
 }));
 app.set('view engine', '.hbs'); //Middlewares
 

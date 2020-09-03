@@ -14,6 +14,7 @@ const {
 
 router.get('/', isLoggedIn, async (req, res) => {
   const registros = await pool.query('SELECT * FROM registros WHERE user_id = ?', [req.user.id]);
+ 
   res.render('registros/list', {
     registros
   });
@@ -50,9 +51,11 @@ router.get('/temperatura/:id', isLoggedIn, async (req, res) => {
     id
   } = req.params;
       const temperaturas = await pool.query('SELECT * FROM temperaturas WHERE reg_id = ?', [id]);
+      const sintomas = await pool.query('SELECT * FROM sintomas WHERE reg_id = ?', [id]);
       const registros = await pool.query('SELECT * FROM registros WHERE user_id = ?', [id]);
 
       res.render('registros/temperatura', {
+        sint: sintomas,
         temperaturas: temperaturas,
         registro: registros[0],
         id
@@ -95,7 +98,9 @@ router.get('/delete/:id', isLoggedIn, async (req, res) => {
     id
   } = req.params;
   await pool.query('DELETE FROM temperaturas WHERE reg_id = ?', [id]);
+  await pool.query('DELETE FROM sintomas WHERE reg_id = ?', [id]);
   await pool.query('DELETE FROM registros WHERE id = ?', [id]);
+ 
   req.flash('SUCCESS', 'Registro eliminado');
   res.redirect('/registros');
 });
